@@ -45,7 +45,7 @@ export default function SoldriveLandingPage() {
     { label: "Tracking accuracy", value: "1°" },
     { label: "Drive type", value: "Single Axis" },
     { label: "Wind resistance", value: "Up to 140 km/h" },
-    { label: "Back tracking", value: "Smart" },
+    { label: "Back tracking", value: "3d backtracking" },
     { label: "Safe mode", value: "Horizontal position in strong winds" },
     { label: "Maintenance", value: "Zero maintenance" },
     { label: "Monitoring", value: "Smart monitoring & telemetry" },
