@@ -45,7 +45,7 @@ export default function SoldriveLandingPage() {
     { label: "Tracking accuracy", value: "1°" },
     { label: "Drive type", value: "Single Axis" },
     { label: "Wind resistance", value: "Up to 140 km/h" },
-    { label: "Back tracking", value: "3d backtracking" },
+    { label: "Back tracking", value: "Smart" },
     { label: "Safe mode", value: "Horizontal position in strong winds" },
     { label: "Maintenance", value: "Zero maintenance" },
     { label: "Monitoring", value: "Smart monitoring & telemetry" },
@@ -59,7 +59,7 @@ export default function SoldriveLandingPage() {
   ];
 
   const installations = [
-    { src: "/s01.jpg", title: "S01", caption: "Soldrive Power" },
+    { src: "/S01.jpg", title: "S01", caption: "Soldrive Power" },
     { src: "/S02.jpg", title: "S02", caption: "Soldrive Core" },
     { src: "/S03.jpg", title: "S03", caption: "Harvesting the sun" },
     {
@@ -67,7 +67,11 @@ export default function SoldriveLandingPage() {
       title: "S04",
       caption: "Solar farm installation integrated into an olive grove landscape.",
     },
-    { src: "/S05.jpg", title: "S05", caption: "Where tradition meets technology" },
+    {
+      src: "/S05.jpg",
+      title: "S05",
+      caption: "Where tradition meets technology",
+    },
     {
       src: "/S06.jpg",
       title: "S06",
@@ -78,17 +82,24 @@ export default function SoldriveLandingPage() {
   return (
     <main>
       <section className="hero">
+        <div className="hero-orb hero-orb-blue" />
+        <div className="hero-orb hero-orb-orange" />
+
         <div className="container hero-grid">
           <div>
             <div className="eyebrow">Soldrive Core</div>
+
             <h1>Increase Solar Yield. Reduce Complexity.</h1>
+
             <p className="moto">
               Plug &amp; Play Single-Axis Solar Tracker — up to 39 kWp, autonomous, zero maintenance.
             </p>
+
             <p className="lead">
               A commercial-grade single-axis solar tracker designed for EPCs, remote installations and
               modern energy projects that need faster deployment, stronger performance and smart monitoring.
             </p>
+
             <p className="lead lead-gr">
               Μονοαξονικός solar tracker έτοιμος για εμπορικές εφαρμογές, σχεδιασμένος για EPCs,
               απομακρυσμένες εγκαταστάσεις και σύγχρονα ενεργειακά έργα που απαιτούν γρήγορη
@@ -156,7 +167,7 @@ export default function SoldriveLandingPage() {
 
           <div className="grid specs-grid">
             {specs.map((item) => (
-              <div key={item.label} className="card">
+              <div key={item.label} className="card specs-card">
                 <div className="card-label">{item.label}</div>
                 <div className="card-value">{item.value}</div>
               </div>
@@ -278,25 +289,64 @@ export default function SoldriveLandingPage() {
 
       <section id="contact" className="section">
         <div className="container">
-          <div className="contact-box">
+          <div className="contact-box contact-advanced">
             <div className="section-tag">Request a Quote</div>
-            <h2>Start your next solar project with smarter tracking</h2>
+
+            <h2>Let’s build your next solar project</h2>
+
             <p>
-              Add your sales email, brochure PDF and commercial details here to turn Soldrive Core into a
-              complete lead-generation page.
+              Get in touch with our team to receive technical specs, pricing and deployment guidance for
+              your project.
             </p>
 
+            <div className="contact-grid">
+              <div className="contact-item">
+                <div className="contact-label">Email</div>
+                <a href="mailto:info@palsengineering.com">info@palsengineering.com</a>
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-label">Phone</div>
+                <a href="tel:+302815103020">+30 2815 103020</a>
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-label">WhatsApp</div>
+                <a
+                  href="https://wa.me/306974354486"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  +30 697 435 4486
+                </a>
+              </div>
+            </div>
+
             <div className="cta-row">
-              <a href="mailto:info@soldrivecore.com" className="btn btn-primary">
-                Contact Us
+              <a href="mailto:info@palsengineering.com" className="btn btn-primary">
+                Request Offer
               </a>
-              <a href="#specs" className="btn btn-secondary">
-                View Specs
+
+              <a
+                href="https://wa.me/306974354486"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+              >
+                WhatsApp Now
               </a>
+            </div>
+
+            <div className="contact-note">
+              Ideal for EPC contractors, developers and hybrid energy projects.
             </div>
           </div>
         </div>
       </section>
+
+      <a href="#contact" className="floating-quote-btn">
+        Get Quote
+      </a>
     </main>
   );
 }
