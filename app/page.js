@@ -12,7 +12,7 @@ const galleryImages = [
   {
     src: "/S06.jpg",
     caption:
-      "Detailed view of high-efficiency photovoltaic panels installed in a rural area.",
+      "Soldrive Dashboard",
   },
 ];
 
