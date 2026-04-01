@@ -1,4 +1,23 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function SoldriveLandingPage() {
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const y = window.scrollY;
+      heroRef.current.style.setProperty("--parallax-offset", `${y * 0.15}px`);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const benefits = [
     {
       title: "Higher ROI",
@@ -131,7 +150,7 @@ export default function SoldriveLandingPage() {
 
   return (
     <main>
-      <section className="hero">
+      <section className="hero hero-parallax" ref={heroRef}>
         <div className="hero-orb hero-orb-blue" />
         <div className="hero-orb hero-orb-orange" />
 
@@ -142,19 +161,22 @@ export default function SoldriveLandingPage() {
             <h1>Increase Solar Yield. Reduce Complexity.</h1>
 
             <p className="moto">
-              Plug &amp; Play Single-Axis Solar Tracker — engineered for performance, durability and autonomous operation.
+              Plug &amp; Play Single-Axis Solar Tracker — engineered for performance,
+              durability and autonomous operation.
             </p>
 
             <p className="lead">
-              Soldrive Core is a commercial-grade Horizontal Single Axis Tracker (HSAT) designed for EPCs,
-              remote installations and demanding energy projects that require structural reliability, smart
-              control and faster deployment.
+              Soldrive Core is a commercial-grade Horizontal Single Axis Tracker
+              (HSAT) designed for EPCs, remote installations and demanding energy
+              projects that require structural reliability, smart control and faster
+              deployment.
             </p>
 
             <p className="lead lead-gr">
-              Το Soldrive Core είναι ένας επαγγελματικός οριζόντιος μονοαξονικός tracker (HSAT),
-              σχεδιασμένος για EPCs, απομακρυσμένες εγκαταστάσεις και απαιτητικά ενεργειακά έργα που
-              χρειάζονται δομική αξιοπιστία, έξυπνο έλεγχο και ταχύτερη ανάπτυξη.
+              Το Soldrive Core είναι ένας επαγγελματικός οριζόντιος μονοαξονικός
+              tracker (HSAT), σχεδιασμένος για EPCs, απομακρυσμένες εγκαταστάσεις
+              και απαιτητικά ενεργειακά έργα που χρειάζονται δομική αξιοπιστία,
+              έξυπνο έλεγχο και ταχύτερη ανάπτυξη.
             </p>
 
             <div className="hero-points">
@@ -185,15 +207,18 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Why Soldrive Core</div>
             <h2>Built to improve performance and return</h2>
             <p>
-              Soldrive Core combines robust mechanical engineering, intelligent control and low-operational-complexity
-              architecture for modern utility, industrial and remote solar applications.
+              Soldrive Core combines robust mechanical engineering, intelligent
+              control and low-operational-complexity architecture for modern utility,
+              industrial and remote solar applications.
             </p>
           </div>
 
           <div className="grid feature-grid">
             {benefits.map((item, index) => (
               <div key={item.title} className="card feature-card">
-                <div className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}>
+                <div
+                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
+                >
                   0{index + 1}
                 </div>
                 <h3>{item.title}</h3>
@@ -210,8 +235,9 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Specifications</div>
             <h2>Core product specs</h2>
             <p>
-              Soldrive Core combines autonomous operation, industrial drive technology, smart control and
-              high structural integrity for long-term field performance.
+              Soldrive Core combines autonomous operation, industrial drive
+              technology, smart control and high structural integrity for long-term
+              field performance.
             </p>
           </div>
 
@@ -232,15 +258,18 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Engineering Highlights</div>
             <h2>Designed for structural reliability</h2>
             <p>
-              The system is built around a philosophy of fewer moving parts, stronger load behavior and
-              more dependable operation in real outdoor conditions.
+              The system is built around a philosophy of fewer moving parts,
+              stronger load behavior and more dependable operation in real outdoor
+              conditions.
             </p>
           </div>
 
           <div className="grid feature-grid">
             {engineeringHighlights.map((item, index) => (
               <div key={item.title} className="card feature-card">
-                <div className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}>
+                <div
+                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
+                >
                   0{index + 1}
                 </div>
                 <h3>{item.title}</h3>
@@ -257,15 +286,18 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Dynamic Stability</div>
             <h2>Dual dynamic dampers for wind resilience</h2>
             <p>
-              Soldrive Core incorporates dual-axis vibration dampers that work alongside the slew drive and
-              intermediate supports to improve dynamic behavior under gust loading and reduce oscillation.
+              Soldrive Core incorporates dual-axis vibration dampers that work
+              alongside the slew drive and intermediate supports to improve dynamic
+              behavior under gust loading and reduce oscillation.
             </p>
           </div>
 
           <div className="grid feature-grid">
             {dynamicControl.map((item, index) => (
               <div key={item.title} className="card feature-card">
-                <div className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}>
+                <div
+                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
+                >
                   0{index + 1}
                 </div>
                 <h3>{item.title}</h3>
@@ -282,15 +314,18 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Controller & Smart Logic</div>
             <h2>Intelligence built into every movement</h2>
             <p>
-              The TCU controller acts as the intelligence layer of the tracker, combining astronomical control,
-              tilt sensing, backtracking and closed-loop feedback in an autonomous architecture.
+              The TCU controller acts as the intelligence layer of the tracker,
+              combining astronomical control, tilt sensing, backtracking and
+              closed-loop feedback in an autonomous architecture.
             </p>
           </div>
 
           <div className="grid feature-grid">
             {controllerFeatures.map((item, index) => (
               <div key={item.title} className="card feature-card">
-                <div className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}>
+                <div
+                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
+                >
                   0{index + 1}
                 </div>
                 <h3>{item.title}</h3>
@@ -307,8 +342,9 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Field Installations</div>
             <h2>Installed in real conditions</h2>
             <p>
-              From engineering close-ups to full-scale field layouts, Soldrive Core is presented through real
-              installation imagery that reinforces technical credibility.
+              From engineering close-ups to full-scale field layouts, Soldrive Core
+              is presented through real installation imagery that reinforces
+              technical credibility.
             </p>
           </div>
 
@@ -332,8 +368,8 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Applications</div>
             <h2>Positioned for real deployment scenarios</h2>
             <p>
-              Soldrive Core is suitable for demanding solar projects where reliability, adaptability and
-              field-ready performance matter.
+              Soldrive Core is suitable for demanding solar projects where
+              reliability, adaptability and field-ready performance matter.
             </p>
           </div>
 
@@ -353,8 +389,9 @@ export default function SoldriveLandingPage() {
             <div className="section-tag">Compliance & Reliability</div>
             <h2>Aligned with recognized standards</h2>
             <p>
-              The system has been designed in alignment with international and European standards relevant to
-              tracker behavior, wind actions, steel structures, PV module compatibility and galvanization.
+              The system has been designed in alignment with international and
+              European standards relevant to tracker behavior, wind actions, steel
+              structures, PV module compatibility and galvanization.
             </p>
           </div>
 
@@ -376,8 +413,8 @@ export default function SoldriveLandingPage() {
             <h2>Let’s build your next solar project</h2>
 
             <p>
-              Get in touch with our team to receive technical specs, pricing and deployment guidance for
-              your project.
+              Get in touch with our team to receive technical specs, pricing and
+              deployment guidance for your project.
             </p>
 
             <div className="contact-grid">
@@ -419,7 +456,8 @@ export default function SoldriveLandingPage() {
             </div>
 
             <div className="contact-note">
-              Ideal for EPC contractors, developers, agrivoltaic projects and hybrid energy systems.
+              Ideal for EPC contractors, developers, agrivoltaic projects and hybrid
+              energy systems.
             </div>
           </div>
         </div>
