@@ -46,10 +46,10 @@ export default function SoldriveLandingPage() {
     { label: "PV modules per row", value: "60 modules" },
     { label: "PV power", value: "Up to 39 kWp" },
     { label: "Drive type", value: "Industrial slew drive" },
-    { label: "Output torque", value: "10 kN·m" },
-    { label: "Holding torque", value: "63 kN·m" },
-    { label: "Tilting moment", value: "45 kN·m" },
     { label: "Safe stow position", value: "0° horizontal" },
+    { label: "Operation", value: "Autonomous" },
+    { label: "Backtracking", value: "Smart backtracking" },
+    { label: "Monitoring", value: "Smart monitoring & telemetry" },
   ];
 
   const engineeringHighlights = [
@@ -150,7 +150,7 @@ export default function SoldriveLandingPage() {
 
   return (
     <main>
-      <section className="hero hero-parallax" ref={heroRef}>
+      <section className="hero hero-parallax section-watermark watermark-hero" ref={heroRef}>
         <div className="hero-orb hero-orb-blue" />
         <div className="hero-orb hero-orb-orange" />
 
@@ -170,13 +170,6 @@ export default function SoldriveLandingPage() {
               (HSAT) designed for EPCs, remote installations and demanding energy
               projects that require structural reliability, smart control and faster
               deployment.
-            </p>
-
-            <p className="lead lead-gr">
-              Το Soldrive Core είναι ένας επαγγελματικός οριζόντιος μονοαξονικός
-              tracker (HSAT), σχεδιασμένος για EPCs, απομακρυσμένες εγκαταστάσεις
-              και απαιτητικά ενεργειακά έργα που χρειάζονται δομική αξιοπιστία,
-              έξυπνο έλεγχο και ταχύτερη ανάπτυξη.
             </p>
 
             <div className="hero-points">
@@ -201,7 +194,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-watermark watermark-left">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Why Soldrive Core</div>
@@ -229,7 +222,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section id="specs" className="section section-alt">
+      <section id="specs" className="section section-alt section-watermark watermark-right">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Specifications</div>
@@ -252,7 +245,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-watermark watermark-center">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Engineering Highlights</div>
@@ -280,7 +273,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section section-alt section-watermark watermark-left">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Dynamic Stability</div>
@@ -308,7 +301,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-watermark watermark-right">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Controller & Smart Logic</div>
@@ -336,7 +329,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section section-installations">
+      <section className="section section-installations section-watermark watermark-center">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Field Installations</div>
@@ -362,7 +355,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section section-alt section-watermark watermark-left">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Applications</div>
@@ -383,7 +376,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-watermark watermark-right">
         <div className="container">
           <div className="section-head">
             <div className="section-tag">Compliance & Reliability</div>
@@ -405,7 +398,7 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section id="contact" className="section section-alt">
+      <section id="contact" className="section section-alt section-watermark watermark-center">
         <div className="container">
           <div className="contact-box contact-advanced">
             <div className="section-tag">Request a Quote</div>
