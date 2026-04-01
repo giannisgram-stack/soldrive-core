@@ -54,6 +54,40 @@ a {
   padding: 92px 0;
 }
 
+.hero-parallax {
+  --parallax-offset: 0px;
+}
+
+.hero-parallax::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background-image: url("/watermark.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 125%;
+  opacity: 0.045;
+  filter: grayscale(1) contrast(1.05) brightness(1.08);
+  transform: translateY(var(--parallax-offset)) scale(1.06);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-parallax::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero-orb {
   position: absolute;
   border-radius: 999px;
@@ -221,8 +255,7 @@ h3 {
 }
 
 .section-installations {
-  background:
-    linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
 }
 
 .section-head {
@@ -484,5 +517,5 @@ h3 {
 
   .contact-box {
     padding: 26px;
-  }  
+  }
 }
