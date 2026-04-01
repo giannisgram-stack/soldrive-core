@@ -484,24 +484,5 @@ h3 {
 
   .contact-box {
     padding: 26px;
-  }
-  .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("/watermark.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 140%;
-
-  opacity: 0.04;
-  filter: 
-    grayscale(1)
-    brightness(1.2)
-    contrast(0.9);
-
-  transform: scale(1.1) rotate(-2deg);
-
-  z-index: 0;  
+  }  
 }
