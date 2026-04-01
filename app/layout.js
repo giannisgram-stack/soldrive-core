@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Soldrive Core",
-  description: "Autonomous single-axis solar tracker platform",
+  description: "Single-axis solar tracker for reliable and autonomous solar deployment",
 };
 
 export default function RootLayout({ children }) {
