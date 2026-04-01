@@ -1,374 +1,311 @@
-"use client";
+import Image from "next/image";
 
-import { useEffect, useRef } from "react";
+const galleryImages = [
+  { src: "/S01.jpg", caption: "Soldrive Power" },
+  { src: "/S02.jpg", caption: "Soldrive Core" },
+  { src: "/S03.jpg", caption: "Harvesting the sun" },
+  {
+    src: "/S04.jpg",
+    caption: "Solar farm installation integrated into an olive grove landscape.",
+  },
+  { src: "/S05.jpg", caption: "Where tradition meets technology" },
+  {
+    src: "/S06.jpg",
+    caption:
+      "Detailed view of high-efficiency photovoltaic panels installed in a rural area.",
+  },
+];
 
-export default function SoldriveLandingPage() {
-  const heroRef = useRef(null);
+const specs = [
+  ["Tracker Type", "Horizontal Single Axis Tracker (HSAT)"],
+  ["Rotation Range", "±60°"],
+  ["Tracking Accuracy", "1°"],
+  ["Nominal Movement Speed", "0.15°/s"],
+  ["Maximum Row Length", "Up to 70 m"],
+  ["PV Modules per Row", "Up to 60"],
+  ["Installed Capacity per Row", "Up to 39 kWp"],
+  ["Support Spacing", "5–7 m"],
+  ["Safe Stow Position", "0° horizontal"],
+  ["Controller Consumption", "≤0.1 kWh/day"],
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      const y = window.scrollY;
-      heroRef.current.style.setProperty("--parallax-offset", `${y * 0.15}px`);
-    };
+const highlights = [
+  {
+    title: "Industrial Structural Backbone",
+    text: "Engineered around galvanized C180 / IPE160 structural members for durability, rigidity, and long-term field performance in demanding utility-scale environments.",
+  },
+  {
+    title: "Autonomous Li-ion Power Architecture",
+    text: "Independent power architecture enables tracker operation without external auxiliary infrastructure, simplifying deployment and reducing balance-of-system dependencies.",
+  },
+  {
+    title: "Optimized for EPC Execution",
+    text: "Designed for scalable implementation, practical assembly logic, and robust operation across projects where reliability, repeatability, and maintainability are essential.",
+  },
+];
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+const dynamics = [
+  {
+    title: "Dual Dynamic Dampers",
+    text: "Integrated dual dynamic dampers contribute to improved oscillation behavior and structural stability under dynamic loading scenarios.",
+  },
+  {
+    title: "Industrial Slew Drive",
+    text: "Heavy-duty slew drive architecture supports controlled movement, repeatable positioning, and dependable operation through the tracker lifecycle.",
+  },
+  {
+    title: "ZA120A Bearings",
+    text: "Selected bearing configuration supports long-span operation with dependable mechanical performance and optimized structural response.",
+  },
+];
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const controlItems = [
+  "Astronomical tracking",
+  "Tilt sensing",
+  "Backtracking logic",
+  "Closed-loop feedback",
+  "Low daily energy consumption",
+  "Autonomous field operation",
+];
 
-  const benefits = [
-    {
-      title: "Higher ROI",
-      text: "Increase energy production by up to 30% compared to fixed installations, improving project economics and long-term asset value.",
-    },
-    {
-      title: "Fast Deployment",
-      text: "Pre-engineered architecture with minimal assembly time, helping teams move from delivery to operation in hours, not days.",
-    },
-    {
-      title: "Autonomous Operation",
-      text: "Fully self-sustained operation without external power dependency, enabled by integrated battery-backed control architecture.",
-    },
-    {
-      title: "Built for Harsh Conditions",
-      text: "Wind-resistant design with smart stow strategy, structural damping and robust industrial components for demanding outdoor environments.",
-    },
-  ];
+const applications = [
+  "Utility-scale PV plants",
+  "Independent power producer projects",
+  "EPC-led turnkey developments",
+  "Agrivoltaic-compatible solar environments",
+  "Sites requiring autonomous tracking architecture",
+  "Projects prioritizing mechanical robustness and smart control logic",
+];
 
-  const specs = [
-    { label: "Tracker type", value: "Horizontal Single Axis Tracker (HSAT)" },
-    { label: "Rotation range", value: "±60°" },
-    { label: "Tracking accuracy", value: "1°" },
-    { label: "Nominal movement speed", value: "0.15°/s" },
-    { label: "Maximum row length", value: "Up to 70 m" },
-    { label: "PV modules per row", value: "60 modules" },
-    { label: "PV power", value: "Up to 39 kWp" },
-    { label: "Drive type", value: "Industrial slew drive" },
-    { label: "Safe stow position", value: "0° horizontal" },
-    { label: "Operation", value: "Autonomous" },
-    { label: "Backtracking", value: "Smart backtracking" },
-    { label: "Monitoring", value: "Smart monitoring & telemetry" },
-  ];
+const compliance = [
+  "IEC/TS 62727:2012",
+  "IEC 61400-1",
+  "EN 1991-1-4",
+  "EN 1993-1-1",
+  "IEC 61215",
+  "EN ISO 1461",
+];
 
-  const engineeringHighlights = [
-    {
-      title: "Minimal moving parts",
-      text: "The design philosophy focuses on reducing moving components while maximizing structural reliability and motion stability under wind load.",
-    },
-    {
-      title: "Heavy-duty structural support",
-      text: "Support spacing of 5–7 m with C180 and IPE160 hot-dip galvanized steel members built for stiffness, lower weight and bending resistance.",
-    },
-    {
-      title: "Industrial support bearings",
-      text: "ZA120A bearings support ±10° inclination and combine aluminum alloy bodies with hot-dip galvanized steel bases and high corrosion resistance.",
-    },
-    {
-      title: "Autonomous power architecture",
-      text: "Integrated Li-ion battery with BMS, polarity protection and charge/discharge protection eliminates the need for external power supply.",
-    },
-  ];
-
-  const dynamicControl = [
-    {
-      title: "Dual Dynamic Dampers",
-      text: "Symmetrically positioned dual-axis dampers reduce vibration, absorb gust loads and help stabilize tracker behavior under asymmetric wind loading.",
-    },
-    {
-      title: "Reduced structural stress",
-      text: "The damping system limits torsion on the rotation axis, reduces bending on the support members and lowers stress on the joints and frame.",
-    },
-    {
-      title: "PV module protection",
-      text: "Reduced vibration helps protect module frames and mounting points, limiting fatigue and contributing to longer service life and stable output.",
-    },
-    {
-      title: "Galloping mitigation",
-      text: "The system improves behavior in long-row applications by reducing the probability of aeroelastic oscillation phenomena under wind excitation.",
-    },
-  ];
-
-  const controllerFeatures = [
-    {
-      title: "Astronomical tracking",
-      text: "Precision astronomical algorithm combined with tilt sensing supports stable tracking without unnecessary oscillation.",
-    },
-    {
-      title: "Smart backtracking",
-      text: "Integrated backtracking reduces inter-row shading and improves system operation in real layout conditions.",
-    },
-    {
-      title: "Closed-loop control",
-      text: "Feedback-based control ensures the tracker responds to real position conditions rather than relying only on theoretical movement commands.",
-    },
-    {
-      title: "Low power consumption",
-      text: "Controller system consumption is ≤0.1 kWh/day with stabilized 24 VDC output for reliable autonomous operation.",
-    },
-  ];
-
-  const applications = [
-    "Commercial & industrial solar",
-    "Remote energy systems",
-    "Hybrid & autonomous projects",
-    "Agricultural and infrastructure applications",
-    "Sites with complex topography",
-    "Regions with increased wind loads",
-  ];
-
-  const compliance = [
-    "IEC/TS 62727:2012 – Solar tracker specifications",
-    "IEC 61400-1 – Wind load methodology",
-    "EN 1991-1-4 (Eurocode 1) – Wind actions",
-    "EN 1993-1-1 (Eurocode 3) – Steel structures",
-    "IEC 61215 – PV module compatibility",
-    "EN ISO 1461 – Hot-dip galvanizing",
-  ];
-
-  const installations = [
-    { src: "/S01.jpg", title: "S01", caption: "Soldrive Power" },
-    { src: "/S02.jpg", title: "S02", caption: "Soldrive Core" },
-    { src: "/S03.jpg", title: "S03", caption: "Harvesting the sun" },
-    {
-      src: "/S04.jpg",
-      title: "S04",
-      caption: "Solar farm installation integrated into an olive grove landscape.",
-    },
-    {
-      src: "/S05.jpg",
-      title: "S05",
-      caption: "Where tradition meets technology",
-    },
-    {
-      src: "/S06.jpg",
-      title: "S06",
-      caption: "Detailed view of high-efficiency photovoltaic panels installed in a rural area.",
-    },
-  ];
-
+export default function HomePage() {
   return (
-    <main>
-      <section className="hero hero-parallax section-watermark watermark-hero" ref={heroRef}>
-        <div className="hero-orb hero-orb-blue" />
-        <div className="hero-orb hero-orb-orange" />
+    <main className="site-shell">
+      <header className="topbar">
+        <div className="container nav-wrap">
+          <a href="#top" className="brand">
+            <span className="brand-mark" />
+            <span>Soldrive Core</span>
+          </a>
 
+          <nav className="nav">
+            <a href="#specs">Specs</a>
+            <a href="#engineering">Engineering</a>
+            <a href="#applications">Applications</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#quote">Contact</a>
+          </nav>
+
+          <a href="#quote" className="nav-cta">
+            Get Quote
+          </a>
+        </div>
+      </header>
+
+      <a
+        href="#quote"
+        className="sticky-quote-button"
+        aria-label="Jump to quote request form"
+      >
+        Get Quote
+      </a>
+
+      <section
+        id="top"
+        className="hero section-watermark watermark-hero"
+        style={{ "--watermark-image": "url('/watermark-hero.png'), url('/watermark.png')" }}
+      >
+        <div className="hero-overlay" />
         <div className="container hero-grid">
-          <div>
-            <div className="eyebrow">Soldrive Core</div>
-
-            <h1>Increase Solar Yield. Reduce Complexity.</h1>
-
-            <p className="moto">
-              Plug &amp; Play Single-Axis Solar Tracker — engineered for performance,
-              durability and autonomous operation.
+          <div className="hero-copy reveal">
+            <span className="eyebrow">Autonomous Solar Tracking Platform</span>
+            <h1>Built for Utility-Scale Solar Execution</h1>
+            <p className="hero-lead">
+              Soldrive Core is a robust HSAT platform designed for EPCs,
+              developers, and investors who need structural confidence, smart
+              control logic, and practical deployment in the field.
             </p>
 
-            <p className="lead">
-              Soldrive Core is a commercial-grade Horizontal Single Axis Tracker
-              (HSAT) designed for EPCs, remote installations and demanding energy
-              projects that require structural reliability, smart control and faster
-              deployment.
-            </p>
-
-            <div className="hero-points">
-              <div>±60° rotation range with 1° tracking accuracy</div>
-              <div>Up to 70 m row length and 60 PV modules per row</div>
-              <div>Autonomous operation with integrated battery-backed control</div>
-            </div>
-
-            <div className="cta-row">
-              <a href="#contact" className="btn btn-primary">
-                Get a Quote
+            <div className="hero-actions">
+              <a href="#quote" className="btn btn-primary">
+                Request a Quote
               </a>
               <a href="#specs" className="btn btn-secondary">
-                Download Specs
+                Explore Specifications
               </a>
+            </div>
+
+            <div className="hero-metrics">
+              <div className="metric-card">
+                <strong>±60°</strong>
+                <span>Rotation range</span>
+              </div>
+              <div className="metric-card">
+                <strong>Up to 70 m</strong>
+                <span>Maximum row length</span>
+              </div>
+              <div className="metric-card">
+                <strong>Up to 39 kWp</strong>
+                <span>Per tracker row</span>
+              </div>
             </div>
           </div>
 
-          <div className="logo-card logo-card-hero">
-            <img src="/soldrive-core-logo.jpeg" alt="Soldrive Core logo" />
+          <div className="hero-panel glass-card reveal reveal-delay-1">
+            <h3>Designed for real EPC requirements</h3>
+            <ul className="check-list">
+              <li>Autonomous Li-ion power architecture</li>
+              <li>Industrial slew drive and robust steel members</li>
+              <li>Closed-loop smart controller logic</li>
+              <li>Dynamic stability enhancement with dampers</li>
+              <li>Compliance-oriented engineering approach</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="section section-watermark watermark-left">
+      <section
+        id="specs"
+        className="section section-watermark watermark-left"
+        style={{ "--watermark-image": "url('/watermark-specs.png'), url('/watermark.png')" }}
+      >
         <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Why Soldrive Core</div>
-            <h2>Built to improve performance and return</h2>
+          <div className="section-heading reveal">
+            <span className="eyebrow">Core Data</span>
+            <h2>Technical Specifications</h2>
             <p>
-              Soldrive Core combines robust mechanical engineering, intelligent
-              control and low-operational-complexity architecture for modern utility,
-              industrial and remote solar applications.
+              Key operating and dimensional characteristics for utility-scale
+              deployment and engineering evaluation.
             </p>
           </div>
 
-          <div className="grid feature-grid">
-            {benefits.map((item, index) => (
-              <div key={item.title} className="card feature-card">
-                <div
-                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
-                >
-                  0{index + 1}
-                </div>
+          <div className="specs-grid">
+            {specs.map(([label, value], index) => (
+              <div key={label} className={`spec-item glass-card reveal reveal-step-${(index % 4) + 1}`}>
+                <span className="spec-label">{label}</span>
+                <strong className="spec-value">{value}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="engineering"
+        className="section section-watermark watermark-right"
+        style={{ "--watermark-image": "url('/watermark-engineering.png'), url('/watermark.png')" }}
+      >
+        <div className="container">
+          <div className="section-heading reveal">
+            <span className="eyebrow">Engineering Value</span>
+            <h2>Engineering Highlights</h2>
+            <p>
+              Built around structural integrity, practical maintainability, and
+              autonomous functionality for modern PV assets.
+            </p>
+          </div>
+
+          <div className="cards-3">
+            {highlights.map((item, index) => (
+              <article
+                key={item.title}
+                className={`glass-card feature-card reveal reveal-step-${index + 1}`}
+              >
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="specs" className="section section-alt section-watermark watermark-right">
-        <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Specifications</div>
-            <h2>Core product specs</h2>
-            <p>
-              Soldrive Core combines autonomous operation, industrial drive
-              technology, smart control and high structural integrity for long-term
-              field performance.
-            </p>
+      <section
+        className="section section-watermark watermark-center"
+        style={{ "--watermark-image": "url('/watermark-dynamics.png'), url('/watermark.png')" }}
+      >
+        <div className="container two-col">
+          <div className="reveal">
+            <div className="section-heading align-left">
+              <span className="eyebrow">Structural Behavior</span>
+              <h2>Dynamic Stability & Mechanical Control</h2>
+              <p>
+                Stability-focused engineering choices support controlled
+                movement, predictable behavior, and robust operation in exposed
+                environments.
+              </p>
+            </div>
           </div>
 
-          <div className="grid specs-grid">
-            {specs.map((item) => (
-              <div key={item.label} className="card specs-card">
-                <div className="card-label">{item.label}</div>
-                <div className="card-value">{item.value}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-watermark watermark-center">
-        <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Engineering Highlights</div>
-            <h2>Designed for structural reliability</h2>
-            <p>
-              The system is built around a philosophy of fewer moving parts,
-              stronger load behavior and more dependable operation in real outdoor
-              conditions.
-            </p>
-          </div>
-
-          <div className="grid feature-grid">
-            {engineeringHighlights.map((item, index) => (
-              <div key={item.title} className="card feature-card">
-                <div
-                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
-                >
-                  0{index + 1}
-                </div>
+          <div className="stack-grid">
+            {dynamics.map((item, index) => (
+              <article
+                key={item.title}
+                className={`glass-card stack-card reveal reveal-step-${index + 1}`}
+              >
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section section-alt section-watermark watermark-left">
-        <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Dynamic Stability</div>
-            <h2>Dual dynamic dampers for wind resilience</h2>
-            <p>
-              Soldrive Core incorporates dual-axis vibration dampers that work
-              alongside the slew drive and intermediate supports to improve dynamic
-              behavior under gust loading and reduce oscillation.
-            </p>
+      <section
+        className="section section-watermark watermark-left"
+        style={{ "--watermark-image": "url('/watermark-controller.png'), url('/watermark.png')" }}
+      >
+        <div className="container two-col">
+          <div className="reveal">
+            <div className="section-heading align-left">
+              <span className="eyebrow">Intelligent Operation</span>
+              <h2>Controller & Smart Logic</h2>
+              <p>
+                The TCU is designed to support accurate solar tracking with
+                intelligent motion logic, reduced energy demand, and dependable
+                autonomous control.
+              </p>
+            </div>
           </div>
 
-          <div className="grid feature-grid">
-            {dynamicControl.map((item, index) => (
-              <div key={item.title} className="card feature-card">
-                <div
-                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
-                >
-                  0{index + 1}
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-watermark watermark-right">
-        <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Controller & Smart Logic</div>
-            <h2>Intelligence built into every movement</h2>
-            <p>
-              The TCU controller acts as the intelligence layer of the tracker,
-              combining astronomical control, tilt sensing, backtracking and
-              closed-loop feedback in an autonomous architecture.
-            </p>
-          </div>
-
-          <div className="grid feature-grid">
-            {controllerFeatures.map((item, index) => (
-              <div key={item.title} className="card feature-card">
-                <div
-                  className={index % 2 === 0 ? "feature-index blue" : "feature-index orange"}
-                >
-                  0{index + 1}
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
+          <div className="glass-card reveal reveal-delay-1">
+            <ul className="logic-list">
+              {controlItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="section section-installations section-watermark watermark-center">
+      <section
+        id="applications"
+        className="section section-watermark watermark-right"
+        style={{ "--watermark-image": "url('/watermark-applications.png'), url('/watermark.png')" }}
+      >
         <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Field Installations</div>
-            <h2>Installed in real conditions</h2>
+          <div className="section-heading reveal">
+            <span className="eyebrow">Use Cases</span>
+            <h2>Applications</h2>
             <p>
-              From engineering close-ups to full-scale field layouts, Soldrive Core
-              is presented through real installation imagery that reinforces
-              technical credibility.
+              Suitable for energy projects where mechanical robustness,
+              autonomous operation, and scalable execution matter.
             </p>
           </div>
 
-          <div className="installations-grid">
-            {installations.map((item) => (
-              <div key={item.title} className="installation-card">
-                <img src={item.src} alt={item.caption} className="installation-image" />
-                <div className="installation-content">
-                  <div className="installation-code">{item.title}</div>
-                  <div className="installation-caption">{item.caption}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt section-watermark watermark-left">
-        <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Applications</div>
-            <h2>Positioned for real deployment scenarios</h2>
-            <p>
-              Soldrive Core is suitable for demanding solar projects where
-              reliability, adaptability and field-ready performance matter.
-            </p>
-          </div>
-
-          <div className="grid app-grid">
-            {applications.map((item) => (
-              <div key={item} className="card app-card">
+          <div className="application-grid">
+            {applications.map((item, index) => (
+              <div
+                key={item}
+                className={`application-item glass-card reveal reveal-step-${(index % 3) + 1}`}
+              >
                 {item}
               </div>
             ))}
@@ -376,89 +313,219 @@ export default function SoldriveLandingPage() {
         </div>
       </section>
 
-      <section className="section section-watermark watermark-right">
+      <section
+        className="section section-watermark watermark-center"
+        style={{ "--watermark-image": "url('/watermark-compliance.png'), url('/watermark.png')" }}
+      >
+        <div className="container two-col">
+          <div className="reveal">
+            <div className="section-heading align-left">
+              <span className="eyebrow">Standards & Quality</span>
+              <h2>Compliance & Reliability</h2>
+              <p>
+                Soldrive Core has been positioned around recognized design and
+                engineering references relevant to PV structures, wind loading,
+                steel design, module compatibility, and galvanization quality.
+              </p>
+            </div>
+          </div>
+
+          <div className="glass-card reveal reveal-delay-1">
+            <div className="badge-grid">
+              {compliance.map((item) => (
+                <span key={item} className="standard-badge">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="gallery"
+        className="section section-watermark watermark-left"
+        style={{ "--watermark-image": "url('/watermark-gallery.png'), url('/watermark.png')" }}
+      >
         <div className="container">
-          <div className="section-head">
-            <div className="section-tag">Compliance & Reliability</div>
-            <h2>Aligned with recognized standards</h2>
+          <div className="section-heading reveal">
+            <span className="eyebrow">Project Visuals</span>
+            <h2>Field Installations Gallery</h2>
             <p>
-              The system has been designed in alignment with international and
-              European standards relevant to tracker behavior, wind actions, steel
-              structures, PV module compatibility and galvanization.
+              Selected images reflecting the product environment, installed
+              systems, and visual identity of Soldrive Core.
             </p>
           </div>
 
-          <div className="grid app-grid">
-            {compliance.map((item) => (
-              <div key={item} className="card app-card">
-                {item}
-              </div>
+          <div className="gallery-grid">
+            {galleryImages.map((image, index) => (
+              <figure
+                key={image.src}
+                className={`gallery-card reveal reveal-step-${(index % 3) + 1}`}
+              >
+                <div className="gallery-image-wrap">
+                  <Image
+                    src={image.src}
+                    alt={image.caption}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    className="gallery-image"
+                  />
+                </div>
+                <figcaption>{image.caption}</figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="section section-alt section-watermark watermark-center">
-        <div className="container">
-          <div className="contact-box contact-advanced">
-            <div className="section-tag">Request a Quote</div>
+      <section
+        id="quote"
+        className="section section-watermark watermark-right"
+        style={{ "--watermark-image": "url('/watermark-contact.png'), url('/watermark.png')" }}
+      >
+        <div className="container quote-layout">
+          <div className="quote-copy reveal">
+            <div className="section-heading align-left quote-heading">
+              <span className="eyebrow">Commercial Contact</span>
+              <h2>Request a Quote</h2>
+              <p>
+                For project discussions, EPC partnerships, technical evaluation,
+                and commercial inquiries, contact the PALS Engineering team.
+              </p>
+            </div>
 
-            <h2>Let’s build your next solar project</h2>
-
-            <p>
-              Get in touch with our team to receive technical specs, pricing and
-              deployment guidance for your project.
-            </p>
-
-            <div className="contact-grid">
-              <div className="contact-item">
-                <div className="contact-label">Email</div>
-                <a href="mailto:info@palsengineering.com">info@palsengineering.com</a>
+            <div className="contact-grid contact-grid-single">
+              <div className="glass-card contact-card">
+                <span className="contact-label">Email</span>
+                <a href="mailto:info@palsengineering.com">
+                  info@palsengineering.com
+                </a>
               </div>
 
-              <div className="contact-item">
-                <div className="contact-label">Phone</div>
+              <div className="glass-card contact-card">
+                <span className="contact-label">Phone</span>
                 <a href="tel:+302815103020">+30 2815 103020</a>
               </div>
 
-              <div className="contact-item">
-                <div className="contact-label">WhatsApp</div>
+              <div className="glass-card contact-card">
+                <span className="contact-label">WhatsApp</span>
                 <a
                   href="https://wa.me/306974354486"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer"
                 >
                   +30 697 435 4486
                 </a>
               </div>
             </div>
+          </div>
 
-            <div className="cta-row">
-              <a href="mailto:info@palsengineering.com" className="btn btn-primary">
-                Request Offer
-              </a>
+          <div className="glass-card quote-form-card reveal reveal-delay-1">
+            <form
+              className="quote-form"
+              action="mailto:info@palsengineering.com"
+              method="post"
+              encType="text/plain"
+            >
+              <div className="form-grid">
+                <div className="field">
+                  <label htmlFor="name">Full Name</label>
+                  <input id="name" name="Full Name" type="text" placeholder="Your name" />
+                </div>
 
-              <a
-                href="https://wa.me/306974354486"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-              >
-                WhatsApp Now
-              </a>
-            </div>
+                <div className="field">
+                  <label htmlFor="company">Company</label>
+                  <input
+                    id="company"
+                    name="Company"
+                    type="text"
+                    placeholder="Company name"
+                  />
+                </div>
 
-            <div className="contact-note">
-              Ideal for EPC contractors, developers, agrivoltaic projects and hybrid
-              energy systems.
-            </div>
+                <div className="field">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="Email"
+                    type="email"
+                    placeholder="name@company.com"
+                  />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="phone">Phone</label>
+                  <input
+                    id="phone"
+                    name="Phone"
+                    type="text"
+                    placeholder="+30 ..."
+                  />
+                </div>
+
+                <div className="field field-full">
+                  <label htmlFor="project">Project Type</label>
+                  <input
+                    id="project"
+                    name="Project Type"
+                    type="text"
+                    placeholder="Utility-scale PV / EPC tender / Technical evaluation"
+                  />
+                </div>
+
+                <div className="field field-full">
+                  <label htmlFor="message">Project Details</label>
+                  <textarea
+                    id="message"
+                    name="Project Details"
+                    rows="6"
+                    placeholder="Tell us about your project, target capacity, location, and timeline."
+                  />
+                </div>
+              </div>
+
+              <div className="form-actions">
+                <button type="submit" className="btn btn-primary">
+                  Send Request
+                </button>
+                <a
+                  href="https://wa.me/306974354486"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-secondary"
+                >
+                  WhatsApp Us
+                </a>
+              </div>
+            </form>
           </div>
         </div>
       </section>
 
-      <a href="#contact" className="floating-quote-btn">
-        Get Quote
-      </a>
+      <footer className="footer">
+        <div className="container footer-wrap">
+          <div>
+            <div className="footer-brand">Soldrive Core</div>
+            <p className="footer-text">
+              Autonomous HSAT platform for robust, utility-scale PV deployment.
+            </p>
+          </div>
+
+          <div className="footer-links">
+            <a href="#specs">Specs</a>
+            <a href="#engineering">Engineering</a>
+            <a href="#applications">Applications</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#quote">Contact</a>
+          </div>
+
+          <div className="footer-contact">
+            <a href="mailto:info@palsengineering.com">info@palsengineering.com</a>
+            <a href="tel:+302815103020">+30 2815 103020</a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
