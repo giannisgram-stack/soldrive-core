@@ -748,6 +748,9 @@ img {
   .form-grid {
     grid-template-columns: 1fr;
   }
+  .brochure-grid {
+  grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 860px) {
