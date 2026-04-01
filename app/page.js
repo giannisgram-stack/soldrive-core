@@ -101,6 +101,23 @@ const compliance = [
   "EN ISO 1461",
 ];
 
+const brochures = [
+  {
+    title: "Technical Brochure (EN)",
+    description:
+      "Download the English technical brochure for Soldrive Core, including product overview, key specifications, and engineering highlights.",
+    href: "/soldrive-core-brochure-en.pdf",
+    cta: "Download English PDF",
+  },
+  {
+    title: "Technical Brochure (GR)",
+    description:
+      "Download the Greek technical brochure for Soldrive Core, including product overview, key specifications, and engineering highlights.",
+    href: "/soldrive-core-brochure-gr.pdf",
+    cta: "Download Greek PDF",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="site-shell">
@@ -116,6 +133,7 @@ export default function HomePage() {
             <a href="#engineering">Engineering</a>
             <a href="#applications">Applications</a>
             <a href="#gallery">Gallery</a>
+            <a href="#brochures">Brochures</a>
             <a href="#quote">Contact</a>
           </nav>
 
@@ -470,6 +488,51 @@ export default function HomePage() {
       </section>
 
       <section
+        id="brochures"
+        className="section section-watermark watermark-right"
+        style={{
+          "--watermark-image":
+            "url('/watermark-brochures.png'), url('/watermark.png')",
+        }}
+      >
+        <div className="container">
+          <div className="section-heading reveal">
+            <span className="eyebrow">Downloads</span>
+            <h2>Technical Brochures</h2>
+            <p>
+              Download the Soldrive Core technical brochures in English and
+              Greek for project evaluation, internal review, and commercial
+              discussions.
+            </p>
+          </div>
+
+          <div className="brochure-grid">
+            {brochures.map((item, index) => (
+              <article
+                key={item.href}
+                className={`glass-card brochure-card reveal reveal-step-${index + 1}`}
+              >
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+
+                <a
+                  href={item.href}
+                  download
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-primary"
+                >
+                  {item.cta}
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
         id="quote"
         className="section section-watermark watermark-left"
         style={{
@@ -639,6 +702,7 @@ export default function HomePage() {
             <a href="#engineering">Engineering</a>
             <a href="#applications">Applications</a>
             <a href="#gallery">Gallery</a>
+            <a href="#brochures">Brochures</a>
             <a href="#quote">Contact</a>
           </div>
 
